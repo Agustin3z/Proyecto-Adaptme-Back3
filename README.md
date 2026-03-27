@@ -27,4 +27,4 @@ Tecnologias Utilizadas en la aplicacion:
 
 Imagen en DockerHub:
 
-Enlace a la imagen:
+Enlace a la imagen:  (https://hub.docker.com/r/agustin3z/trabajo-adoptme-coder)
