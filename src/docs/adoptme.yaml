@@ -1,13 +1,144 @@
 openapi: 3.0.1
 info:
   title: API Adoptme
-  description: Documentación de mi proyecto
+  description: Documentación completa del proyecto Adoptme
   version: 1.0.0
 
 paths:
+
+  /api/users:
+    get:
+      summary: Obtener todos los usuarios
+      tags:
+        - Users
+      responses:
+        200:
+          description: Lista de usuarios
+
+    post:
+      summary: Crear usuario
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        200:
+          description: Usuario creado correctamente
+
+  /api/pets:
+    get:
+      summary: Obtener todas las mascotas
+      tags:
+        - Pets
+      responses:
+        200:
+          description: Lista de mascotas
+
+    post:
+      summary: Crear mascota
+      tags:
+        - Pets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                specie:
+                  type: string
+                birthDate:
+                  type: string
+      responses:
+        200:
+          description: Mascota creada correctamente
+
+  /api/adoptions:
+    get:
+      summary: Obtener todas las adopciones
+      tags:
+        - Adoptions
+      responses:
+        200:
+          description: Lista de adopciones
+
+  /api/adoptions/{aid}:
+    get:
+      summary: Obtener adopción por ID
+      tags:
+        - Adoptions
+      parameters:
+        - name: aid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Adopción encontrada
+        404:
+          description: Adopción no encontrada
+
+  /api/adoptions/{uid}/{pid}:
+    post:
+      summary: Crear una adopción
+      tags:
+        - Adoptions
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Adopción creada correctamente
+        400:
+          description: Error en la solicitud
+
+  /api/mocks/mockingusers:
+    get:
+      summary: Generar usuarios mock
+      tags:
+        - Mocks
+      responses:
+        200:
+          description: Usuarios generados
+
+  /api/mocks/mockingpets:
+    get:
+      summary: Generar mascotas mock
+      tags:
+        - Mocks
+      responses:
+        200:
+          description: Mascotas generadas
+
   /api/mocks/generateData:
     post:
-      summary: Genera usuarios y mascotas
+      summary: Generar e insertar usuarios y mascotas en DB
+      tags:
+        - Mocks
       requestBody:
         required: true
         content:
@@ -22,4 +153,3 @@ paths:
       responses:
         200:
           description: Datos generados correctamente
-          
