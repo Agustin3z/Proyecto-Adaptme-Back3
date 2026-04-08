@@ -1,0 +1,25 @@
+openapi: 3.0.1
+info:
+  title: API Adoptme
+  description: Documentación de mi proyecto
+  version: 1.0.0
+
+paths:
+  /api/mocks/generateData:
+    post:
+      summary: Genera usuarios y mascotas
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                users:
+                  type: integer
+                pets:
+                  type: integer
+      responses:
+        200:
+          description: Datos generados correctamente
+          
